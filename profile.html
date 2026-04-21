@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+<!DOCTYPE html>
+<html lang="ar" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LinkedIn Profile Clone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+   
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container">
+
+    <!-- Logo -->
+    <div class="logo">
+      Linked<span style="background:#1066bd;color:white;padding:2px 6px;border-radius:4px;">in</span>
+    </div>
+
+    <!-- Search -->
+    <form class="d-flex me-auto ms-3">
+      <input class="form-control rounded-5" type="search" placeholder="Search" style="width:250px;">
+    </form>
+
+    <!-- Toggle -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Links -->
+    <div class="collapse navbar-collapse pt-3" id="navbarNav">
+
+      <ul class="navbar-nav ms-auto text-center">
+
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="bi bi-house-door-fill"></i><br>Home</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-people-fill"></i><br>My Network</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-briefcase-fill"></i><br>Jobs</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-chat-dots-fill"></i><br>Messaging</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-bell-fill"></i><br>Notifications</a>
+        </li>
+
+        <!-- Profile Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link text-dark" href="#" role="button" data-bs-toggle="dropdown">
+              <img src="1771685065878.png" class="rounded-circle mx-auto" width="50px"><br>Me
+          </a>
+
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="width:250px;">
+
+            <!-- User Info -->
+            <li class="px-2 py-2">
+              <div class="d-flex align-items-center">
+                 <img src="1771685065878.png" class="rounded-circle mx-auto" width="50px">
+                <div>
+                  <strong id="userName">User</strong><br>
+                  <small class="text-muted">Junior Developer</small>
+                </div>
+              </div>
+            </li>
+
+            <li>
+              <a href="profile.html" class="btn btn-outline-primary w-100 mb-2">
+                View Profile
+              </a>
+            </li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
+            <li><a class="dropdown-item" href="#">Help</a></li>
+
+            <li><hr class="dropdown-divider"></li>
+
+            <li>
+              <a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a>
+            </li>]]
+
+          </ul>
+        </li>
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+<div class="container-lg mt-3 px-2">
+  <div class="row g-3 justify-content-center">
+
+    <!-- MAIN -->
+    <div class="col-12 col-lg-8" style="max-width:680px;">
+
+      <!-- HEADER CARD -->
+      <div class="li-card">
+        <!-- Cover -->
+        <div class="cover-area" id="coverArea">
+          <div class="edit-overlay">📷 Change cover photo</div>
+          <input type="file" id="coverUpload" accept="image/*" style="display:none;"/>
+        </div>
+
+        <div class="d-flex justify-content-between align-items-start flex-wrap px-3 pb-0" style="margin-top:0;">
+          <!-- Avatar -->
+          <div class="avatar-wrap">
+            <div class="avatar" id="avatarEl">
+              <input type="file" id="avatarUpload" accept="image/*" style="display:none;"/>
+            </div>
+            <div class="avatar-edit" id="avatarEditBtn" title="Change photo">📷</div>
+          </div>
+
+          <!-- Actions -->
+          <div class="d-flex gap-2 flex-wrap pt-2" style="margin-top:10px;">
+ <button onclick="document.getElementById('editModal').style.display='flex'">
+Edit profile
+</button>
+            <button class="btn-outline" onclick="location.href='home.html'">📋 View feed</button>
+          </div>
+        </div>
+
+        <div class="p-3 pt-2">
+          <h4 style="font-weight:700;margin-bottom:2px;" id="profileName">Loading…</h4>
+          <div style="font-size:15px;color:#191919;margin-bottom:4px;" id="profileTitle"></div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:6px;" id="profileLocation"></div>
+          <div style="font-size:14px;color:var(--muted);margin-bottom:8px;" id="profilePhone"></div>
+          <div style="color:var(--blue);font-weight:600;font-size:14px;margin-bottom:12px;">
+            <span id="profileConnCount">0</span> connections
+          </div>
+
+          <!-- Open to work banner -->
+          <div class="otw-banner">
+            <div class="d-flex justify-content-between align-items-start">
+              <div>
+                <div style="font-weight:700;font-size:14px;margin-bottom:2px;">Open to work</div>
+                <div id="otwLocation" style="color:var(--muted);font-size:13px;">Cairo +2 more | On-site · Remote · Hybrid</div>
+              </div>
+              <button class="edit-icon" id="editOtwBtn">✏️</button>
+            </div>
+            <div style="color:var(--blue);font-size:13px;margin-top:6px;cursor:pointer;">Show details</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ANALYTICS -->
+      <div class="li-card p-3">
+        <div style="font-size:13px;color:var(--muted);margin-bottom:10px;">🔒 Analytics · Private to you</div>
+        <div class="d-flex gap-2 flex-wrap">
+          <div class="ana-card">
+            <div style="font-size:22px;font-weight:700;" id="anaViews">0</div>
+            <div style="font-size:13px;color:var(--muted);">Profile views</div>
+          </div>
+          <div class="ana-card">
+            <div style="font-size:22px;font-weight:700;" id="anaPosts">0</div>
+            <div style="font-size:13px;color:var(--muted);">Post impressions</div>
+          </div>
+          <div class="ana-card">
+            <div style="font-size:22px;font-weight:700;" id="anaSearch">0</div>
+            <div style="font-size:13px;color:var(--muted);">Search appearances</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ABOUT -->
+      <div class="li-card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <div class="section-title mb-0">About</div>
+          <button class="edit-icon" id="openAboutModal">✏️</button>
+        </div>
+        <p id="profileAbout" style="font-size:14px;line-height:1.7;color:var(--muted);">No about section yet.</p>
+      </div>
+
+      <!-- SKILLS -->
+      <div class="li-card p-3">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div class="section-title mb-0">Skills</div>
+          <button class="edit-icon" id="openSkillModal">➕</button>
+        </div>
+        <div id="skillsContainer" class="d-flex flex-wrap gap-2"></div>
+      </div>
+
+      <!-- POSTS -->
+      <div class="li-card p-3">
+        <div class="section-title">My Posts</div>
+        <div id="myPostsContainer"></div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT -->
+    <div class="col-lg-3 right-col" style="max-width:280px;">
+      <div class="li-card p-3 mb-2">
+        <div style="font-weight:700;font-size:14px;margin-bottom:10px;">Profile language</div>
+        <div style="font-size:13px;color:var(--muted);">English</div>
+      </div>
+      <div class="li-card p-3">
+        <div style="font-weight:700;font-size:14px;margin-bottom:4px;">Public profile & URL</div>
+        <div style="font-size:12px;color:var(--blue);" id="profileUrl">www.linkedin.com/in/...</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- EDIT PROFILE MODAL -->
+<div class="modal-overlay" id="editModal">
+  <div class="modal-box">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h6 style="font-weight:700;margin:0;">Edit profile</h6>
+      <button id="closeEditModal" style="background:none;border:none;font-size:20px;cursor:pointer;color:#999;">✕</button>
+    </div>
+    <div class="mb-3"><label class="fl">Full Name</label><input class="form-ctrl" id="editName" type="text"/></div>
+    <div class="mb-3"><label class="fl">Professional Title</label><input class="form-ctrl" id="editTitle" type="text" placeholder="e.g. Junior Software Developer"/></div>
+    <div class="mb-3"><label class="fl">Location</label><input class="form-ctrl" id="editLocation" type="text" placeholder="e.g. Cairo, Egypt"/></div>
+    <div class="mb-3"><label class="fl">Phone</label><input class="form-ctrl" id="editPhone" type="tel"/></div>
+    <div class="d-flex justify-content-end gap-2">
+      <button id="closeEditModal2" style="background:none;border:1px solid var(--border);border-radius:24px;padding:7px 18px;cursor:pointer;">Cancel</button>
+     <button onclick="saveProfile()">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT MODAL -->
+<div class="modal-overlay" id="aboutModal">
+  <div class="modal-box">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h6 style="font-weight:700;margin:0;">Edit About</h6>
+      <button id="closeAboutModal" style="background:none;border:none;font-size:20px;cursor:pointer;color:#999;">✕</button>
+    </div>
+    <textarea class="form-ctrl" id="editAbout" rows="5" placeholder="Tell the world about yourself…"></textarea>
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button id="closeAboutModal2" style="background:none;border:1px solid var(--border);border-radius:24px;padding:7px 18px;cursor:pointer;">Cancel</button>
+      <button class="btn-blue" id="saveAbout">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- SKILL MODAL -->
+<div class="modal-overlay" id="skillModal">
+  <div class="modal-box">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h6 style="font-weight:700;margin:0;">Add Skill</h6>
+      <button id="closeSkillModal" style="background:none;border:none;font-size:20px;cursor:pointer;color:#999;">✕</button>
+    </div>
+    <input class="form-ctrl" id="newSkillInput" type="text" placeholder="e.g. React, Node.js, Python…"/>
+    <div class="d-flex justify-content-end gap-2 mt-3">
+      <button id="closeSkillModal2" style="background:none;border:1px solid var(--border);border-radius:24px;padding:7px 18px;cursor:pointer;">Cancel</button>
+      <button class="btn-blue" id="addSkillBtn">Add</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>

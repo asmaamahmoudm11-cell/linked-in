@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LinkedIn Clone</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+  <div class="container">
+    <div class="logo">
+      Linked<span style="background:#1066bd;color:white;padding:2px 6px;border-radius:4px;">in</span>
+    </div>
+    <form class="d-flex me-auto ms-3">
+      <input class="form-control rounded-5" type="search" placeholder="Search" style="width:500px;">
+    </form>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse pt-3" id="navbarNav">
+      <ul class="navbar-nav ms-auto text-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="bi bi-house-door-fill"></i><br>Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-people-fill"></i><br>My Network</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-briefcase-fill"></i><br>Jobs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-chat-dots-fill"></i><br>Messaging</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="bi bi-bell-fill"></i><br>Notifications</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link text-dark" href="#" role="button" data-bs-toggle="dropdown">
+            <img id="navProfileImg" src="1771685065878.png" class="rounded-circle mx-auto" width="30" height="30" style="object-fit:cover;"><br>Me
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end p-2" style="width:250px;">
+            <li class="px-2 py-2">
+              <div class="d-flex align-items-center gap-2">
+                <img id="dropdownProfileImg" class="rounded-circle" width="40" height="40" style="object-fit:cover;">
+                <div>
+                  <strong id="userName">User</strong><br>
+                  <small class="text-muted" id="userTitle">Junior Developer</small>
+                </div>
+              </div>
+            </li>
+            <li><a href="profile.html" class="btn btn-outline-primary w-100 mb-2">View Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Settings & Privacy</a></li>
+            <li><a class="dropdown-item" href="#">Help</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item text-danger" href="#" onclick="logout()">Logout</a></li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container mt-4">
+  <div class="row">
+
+    <!-- Left Sidebar -->
+    <div class="col-md-3">
+      <div class="card sidebar p-3 text-center">
+        <img id="sidebarProfileImg" src="1771685065878.png" class="rounded-circle mx-auto"
+             style="width:64px;height:64px;object-fit:cover;">
+        <h6 class="mt-2" id="userName"></h6>
+        <p class="small-text" id="sidebarTitle">Junior Software Developer</p>
+      </div>
+      <div class="card mt-3 p-3 small-text">
+        <p>Profile viewers <span class="float-end text-primary" id="viewerCount">346</span></p>
+        <p>Post impressions <span class="float-end text-primary" id="impressionCount">10</span></p>
+      </div>
+    </div>
+
+    <!-- Feed -->
+    <div class="col-md-6">
+      <div class="card p-3 mb-3 post-box">
+        <div class="d-flex align-items-center gap-2 mb-2">
+          <img id="postBoxImg" class="rounded-circle" style="width:40px;height:40px;object-fit:cover;">
+          <input class="form-control rounded-5" id="postInput" placeholder="Start a post">
+        </div>
+        <div id="imagePreviewContainer" style="display:none;" class="mb-2">
+          <img id="imagePreview" style="max-width:100%;border-radius:8px;"><br>
+          <button id="removeImageBtn" class="btn btn-sm btn-danger mt-1">
+            <i class="bi bi-trash"></i> Remove Image
+          </button>
+        </div>
+        <div class="d-flex gap-2 mt-1 flex-wrap">
+          <label class="btn btn-light btn-sm" for="postImageInput">
+            <i class="bi bi-image text-success"></i> Photo
+            <input type="file" id="postImageInput" accept="image/*" style="display:none;">
+          </label>
+          <button id="postBtn" class="btn btn-primary btn-sm ms-auto">Post</button>
+        </div>
+      </div>
+      <div id="feed"></div>
+    </div>
+
+    <!-- Right Sidebar -->
+    <div class="col-md-3">
+      <div class="card rightbar p-3">
+        <h6>Today's puzzles</h6>
+        <p class="small-text">Mini Sudoku #249</p>
+        <p class="small-text">Zip #396</p>
+      </div>
+      <div class="card mt-3 p-3">
+        <h6>Add to your feed</h6>
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <span class="small-text">NBK Egypt</span>
+          <button class="btn btn-sm btn-outline-primary follow-btn">+ Follow</button>
+        </div>
+        <div class="d-flex align-items-center justify-content-between">
+          <span class="small-text">VOIS</span>
+          <button class="btn btn-sm btn-outline-primary follow-btn">+ Follow</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- POST MODAL -->
+<div class="modal fade" id="postModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create a Post</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex align-items-center gap-2 mb-3">
+          <img id="dropdownProfileImg2" class="rounded-circle" style="width:48px;height:48px;object-fit:cover;">
+          <div>
+            <strong id="modalPostName"></strong><br>
+            <small class="text-muted">Post to Anyone</small>
+          </div>
+        </div>
+        <textarea class="form-control" id="modalPostText" rows="5"
+                  placeholder="What do you want to talk about?"></textarea>
+        <div id="modalImagePreviewContainer" class="mt-2" style="display:none;">
+          <img id="modalImagePreview" style="max-width:100%;border-radius:8px;">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <label class="btn btn-light" for="modalImageInput">
+          <i class="bi bi-image text-success"></i> Photo
+          <input type="file" id="modalImageInput" accept="image/*" style="display:none;">
+        </label>
+        <button class="btn btn-primary ms-auto" id="modalPostBtn">Post</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/bootstrap.bundle.min.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
